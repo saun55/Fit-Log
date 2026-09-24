@@ -3,6 +3,8 @@ import "./globals.css";
 import { Inter, Oswald } from "next/font/google";
 import Navbar from "./Component/Navbar";
 import FitLogProvider from "./Context/FitLogProvider";
+import { ToastContainer } from "react-toastify";
+import Footer from "./Component/Footer";
 
 
 const inter = Inter({
@@ -30,10 +32,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         
      <FitLogProvider>
+      <ToastContainer />
         <Navbar/>
           <div>
                {children}
           </div>
+          <Footer/>
 </FitLogProvider>
 
         </body>

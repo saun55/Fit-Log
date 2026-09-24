@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { FitLogContext } from "../Context/FitLogProvider";
 import { FaCalendarPlus } from "react-icons/fa";
 import { FitLogType } from "../FitLogType/FitLogType";
+import { toast, Zoom } from "react-toastify";
 interface AddPlanButtonType{
   data:FitLogType
 }
@@ -15,12 +16,33 @@ const allReady = addPlan.some(a=> a.id === data.id)
 
 const handelAddPlan = ()=> {
   if(allReady){
+    toast.success("Already in your plan", {
+position: "top-right",
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+transition: Zoom,
+});
     return;
   }
   else{
     setAddPlan([...addPlan,data])
+   toast.success("Add to today's plan", {
+position: "top-right",
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+transition: Zoom,
+});
   }
-
 }
 
   return (

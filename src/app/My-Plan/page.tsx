@@ -41,11 +41,21 @@ const MyPlanPage = () => {
 
  const addPlanSort = sortSelector(addPlan)
 
- const Exercises = addPlanSort.length
+ 
 
-const totalTime = addPlanSort.reduce((total , work)=> total+ work.duration,0)
+//  const Exercises = addPlanSort.length
 
-const totalCslori = addPlanSort.reduce((acc,valu)=> valu.caloriesBurned+acc ,0)
+// const totalTime = addPlanSort.reduce((total , valu)=> total+ valu.duration,0)
+
+// const totalCslori = addPlanSort.reduce((total,valu)=>total+ valu.caloriesBurned ,0)
+
+const currentData = activeTab === "plan" ? addPlanSort : savedSort ;
+
+ const exercises = currentData.length
+
+const totalTime = currentData.reduce((total , work)=> total+ work.duration,0)
+
+const totalCslori = currentData.reduce((acc,valu)=> valu.caloriesBurned+acc ,0)
 
 
   return (
@@ -56,15 +66,19 @@ const totalCslori = addPlanSort.reduce((acc,valu)=> valu.caloriesBurned+acc ,0)
 
 <p className="text-[14px] font-inter">Cap of five lifts for today. Finish them, then load more.</p>
 
-{/*========= total==========*/}
+{/*========= today plan total==========*/}
 
-<div className="border-2 text-black bg-amber-100 py-8 flex justify-around items-center">
- <div className="grid grid-cols-1">Exercises <span>{Exercises}</span></div>
- <div className="grid grid-cols-1">Minutes <span>{totalTime}</span></div>
- <div className="grid grid-cols-1">Calories <span>{totalCslori}</span></div>
-</div>
+{ 
+  <div className="border-2 text-black bg-[#13161D] py-8 flex justify-around items-center">
+ <div className="grid grid-cols-1 text-[#8A92A0]">Exercises <span className="text-[#C2F800] font-bold font-oswald text-[30px]">{exercises}</span></div>
 
-      </div>
+ <div className="grid grid-cols-1 text-[#8A92A0]">Minutes <span className="text-white font-bold font-oswald text-[30px]">{totalTime}</span></div>
+
+ <div className="grid grid-cols-1 text-[#8A92A0]">Calories <span className="text-white font-bold font-oswald text-[30px]">{totalCslori}</span></div>
+</div>} 
+
+
+ </div>
       
       {/* ================= HEADER ================= */}
       <div className="flex items-center justify-between ">
@@ -125,7 +139,7 @@ const totalCslori = addPlanSort.reduce((acc,valu)=> valu.caloriesBurned+acc ,0)
 <div className="space-y-2 grid items-center text-center">
    <h1 className="font-bold font-oswald text-[20px]">NOTHING HERE YET</h1>
    <p className="font-inter text-[12px]">Browse the library and add a lift to get today moving.</p>
-   <Link className="btn mx-10" href={"/"}>Go to workouts</Link>
+   <Link className="btn btn-xs mt-2 h-7 min-h-7 mx-auto px-3 text-[10px] border-none bg-[#C2F800] text-black hover:bg-[#aee000]" href={"/"}>Go to workouts</Link>
 </div>
           
 

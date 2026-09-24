@@ -1,21 +1,27 @@
-
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import logu from "@/assets/logo.png";
 
-import PlanButton from "../FitLogButton/PlanButton";
-import SavedButon from "../FitLogButton/SavedButon";
+import PlanButton from "../FitLogButton/NavPlanButton";
+import SavedButon from "../FitLogButton/NavSaveButton";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
- 
+
+  const pathName =usePathname()
 
   const link = (
     <>
       <li>
-        <Link href={"/"}>Workouts</Link>
+        <Link href={"/"}
+        className={`${pathName === ("/") ? "text-[#CCFF00] bg-[#c8d1a64e] " : ""}`}
+        >Workouts</Link>
       </li>
 
       <li>
-        <Link href={"/My-Plan"}>My Plan</Link>
+        <Link href={"/My-Plan"} 
+        className={`${pathName === ("/My-Plan") ? "text-[#CCFF00] bg-[#c8d1a64e] " : ""}`}
+        >My Plan</Link>
       </li>
     </>
   );

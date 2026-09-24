@@ -4,22 +4,45 @@ import { useContext } from "react";
 import { FitLogType } from "../FitLogType/FitLogType";
 import { FitLogContext } from "../Context/FitLogProvider";
 import { FaBookmark } from "react-icons/fa";
+import { toast, Zoom } from "react-toastify";
 
 interface AddPlanButtonType{
   data:FitLogType
 }
 
 const SaveLaterButton = ({data}:AddPlanButtonType) => {
-const {addPlan,setSaveLater} = useContext(FitLogContext)
+const {saveLater,setSaveLater} = useContext(FitLogContext)
 
-const allReady = addPlan.some(a=> a.id === data.id)
+const allReady = saveLater.some(a=> a.id === data.id)
 
 const handelSave = ()=> {
   if(allReady){
+ toast.success("Already in your save", {
+position: "top-right",
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+transition: Zoom,
+});
     return;
   }
   else{
-    setSaveLater([...addPlan,data])
+    setSaveLater([...saveLater,data])
+    toast.success("Save for later", {
+position: "top-right",
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+transition: Zoom,
+});
   }
 
 }
