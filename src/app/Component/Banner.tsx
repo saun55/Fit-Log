@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <div className="mx-auto w-full max-w-7xl px-7">
+    <div className="mx-auto w-full max-w-7xl px-7 my-7">
       <div className="bg-[#222630] py-10 flex justify-around items-center rounded-2xl">
 
       {/* left side  */}

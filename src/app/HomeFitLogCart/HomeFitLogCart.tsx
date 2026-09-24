@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FitLogType } from "../FitLogType/FitLogType";
-import { FaClock, FaFire, FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
+import { FaRegClock, FaRegStar, } from "react-icons/fa";
 import { PiFireSimpleFill } from "react-icons/pi";
 import Link from "next/link";
 
