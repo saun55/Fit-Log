@@ -1,7 +1,13 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import logu from "@/assets/logo.png";
+
+import PlanButton from "../FitLogButton/PlanButton";
+import SavedButon from "../FitLogButton/SavedButon";
 const Navbar = () => {
+ 
+
   const link = (
     <>
       <li>
@@ -52,8 +58,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <button className="">Plan</button>
-          <button className="">Saved</button>
+
+        <PlanButton/>
+
+     <SavedButon/>
+
         </div>
       </div>
     </div>

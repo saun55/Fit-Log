@@ -1,10 +1,20 @@
+import AddPlanButton from "@/app/FitLogButton/AddPlanButton";
+import SaveLaterButton from "@/app/FitLogButton/SaveLaterButton";
 import { FitLogType } from "@/app/FitLogType/FitLogType";
+
 import Image from "next/image";
-import { FaBookmark, FaCalendarPlus } from "react-icons/fa";
+
 
 interface FitLogDetailsType{
   params: Promise <{Id: string}>
 }
+
+export const generateStaticParams = async() =>{
+  const res = await fetch("https://api.abcz.workers.dev/api/fitlog")
+  const data = await res.json()
+  return data.map((fitData:FitLogType )=>({Id: String(fitData.id)}))
+}
+
 
 
 const FitLogDetails = async({params}:FitLogDetailsType) => {
@@ -172,15 +182,9 @@ const FitLogDetails = async({params}:FitLogDetailsType) => {
             {/* ================= BUTTONS ================= */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
 
-              <button className="btn bg-[#CCFF00] rounded-lg px-5 text-black">
-                <FaCalendarPlus />
-                Add to today&#39;s plan
-              </button>
+      <AddPlanButton data={data}/>
 
-              <button className="btn btn-outline rounded-lg border-gray-600 text-white hover:border-[#CCFF00]">
-                <FaBookmark />
-                Save for later
-              </button>
+  <SaveLaterButton data={data}/>
 
             </div>
 
