@@ -1,36 +1,243 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏋️ FitLog — Fitness & Workout Tracker
 
-## Getting Started
+FitLog is a modern fitness and workout tracking web application built with **Next.js, TypeScript, Tailwind CSS, and DaisyUI**.
 
-First, run the development server:
+Users can explore different workouts, view workout details, create a personal workout plan, and save workouts for later.
+
+## 🚀 Live Demo
+
+🌐 [Live Demo](https://fitlog-gilt.vercel.app/)
+
+## 📸 Features
+
+* 🏋️ Browse different workout exercises
+* 🔎 View detailed workout information
+* 📋 Add workouts to **Today's Plan**
+* 🔖 Save workouts for later
+* 💾 Store plans using browser `localStorage`
+* ⭐ Display workout ratings
+* 🔥 Show estimated calories burned
+* ⏱️ Display workout duration
+* 💪 Show targeted muscle groups
+* 📱 Fully responsive design
+* ✨ Skeleton loading animation
+* 🌙 Modern dark UI
+* ⚡ Fast and optimized Next.js application
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* DaisyUI
+
+### Libraries
+
+* React Icons
+* Next/Image
+* Next/Link
+
+### Data Storage
+
+* Browser `localStorage`
+
+## 📂 Project Structure
+
+```text
+src/
+│
+├── app/
+│   ├── Components/
+│   │   ├── HomeFitLogCart.tsx
+│   │   ├── HomeFitLogCartSkeleton.tsx
+│   │   ├── TodayPlanCart.tsx
+│   │   └── SavedCart.tsx
+│   │
+│   ├── Context/
+│   │   └── FitLogProvider.tsx
+│   │
+│   ├── FitLogType/
+│   │   └── FitLogType.ts
+│   │
+│   └── Workouts/
+│       └── [id]/
+│
+├── public/
+│   └── images/
+│
+└── ...
+```
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+Go to the project directory:
+
+```bash
+cd fitlog
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧩 Main Features
 
-## Learn More
+### Today's Plan
 
-To learn more about Next.js, take a look at the following resources:
+Users can add workouts to their daily workout plan.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The selected workouts are stored in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+localStorage
+```
 
-## Deploy on Vercel
+using the key:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+todayPlan
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Save for Later
+
+Users can save workouts that they want to complete later.
+
+Saved workouts are stored using:
+
+```text
+saveLater
+```
+
+in browser `localStorage`.
+
+### Workout Details
+
+Each workout has its own dynamic route:
+
+```text
+/Workouts/[id]
+```
+
+Example:
+
+```text
+/Workouts/5
+```
+
+## 💾 Local Storage
+
+FitLog uses browser `localStorage` to persist user data.
+
+Example:
+
+```ts
+localStorage.setItem(
+  "todayPlan",
+  JSON.stringify(addPlan)
+);
+
+localStorage.setItem(
+  "saveLater",
+  JSON.stringify(saveLater)
+);
+```
+
+The application loads the stored data when the user returns to the website.
+
+## 🎨 UI
+
+The application uses a modern dark-themed interface with:
+
+* Responsive cards
+* Workout badges
+* Hover animations
+* Loading skeletons
+* Responsive grid layouts
+* Interactive buttons
+* Workout statistics
+
+## 📱 Responsive Design
+
+FitLog is designed to work across:
+
+* 📱 Mobile
+* 📲 Tablet
+* 💻 Laptop
+* 🖥️ Desktop
+
+Example responsive grid:
+
+```tsx
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {/* Workout Cards */}
+</div>
+```
+
+## 🧠 What I Learned
+
+While building this project, I practiced:
+
+* Next.js App Router
+* Dynamic routes
+* React Context API
+* TypeScript interfaces
+* State management
+* `useState`
+* `useEffect`
+* Client Components
+* Browser `localStorage`
+* Loading states
+* Skeleton UI
+* Responsive design
+* Tailwind CSS
+* DaisyUI
+* Reusable React components
+
+## 🔮 Future Improvements
+
+* 🔐 User authentication
+* ☁️ Cloud database
+* 📊 Workout progress tracking
+* 📈 Fitness statistics dashboard
+* 🔔 Workout reminders
+* ❤️ Favorite workouts
+* 🔍 Advanced workout filtering
+* 🌓 Light/Dark theme switcher
+
+## 👨‍💻 Author
+
+**Shawon Ahmmed**
+
+Full-Stack Web Developer from Bangladesh
+
+### Connect With Me
+
+* GitHub: `https://github.com/saun55`
+* LinkedIn: `https://linkedin.com/in/shawonahmmed`
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
