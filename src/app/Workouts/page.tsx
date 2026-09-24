@@ -4,7 +4,12 @@ import HomeFitLogCart from "../HomeFitLogCart/HomeFitLogCart";
 const getFitLogData = async () => {
   try {
     const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-    return res.json();
+    
+if (!res.ok) {
+      throw new Error("Failed to fetch FitLog data");
+    }
+return res.json();
+
   } catch (error) {
     console.error("Data Not Found", error);
     return [];

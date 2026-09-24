@@ -1,5 +1,4 @@
 import { FaRegClock, FaRegStar } from "react-icons/fa";
-import { MdOutlineDone } from "react-icons/md";
 import { PiFireSimpleFill } from "react-icons/pi";
 import { TiDelete } from "react-icons/ti";
 import { FitLogType } from "../FitLogType/FitLogType";
@@ -7,14 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { FitLogContext } from "../Context/FitLogProvider";
+import { toast, Zoom } from "react-toastify";
 
 interface SavedCartType{
   PlanCart:FitLogType
 }
-
-
-
-
 
 const SavedCart = ({PlanCart}:SavedCartType) => {
 
@@ -23,6 +19,17 @@ const {saveLater,setSaveLater} = useContext(FitLogContext)
 const handelDelete = ()=>{
   const pre = saveLater.filter(fit => fit.id !== PlanCart.id);
  setSaveLater(pre)
+ toast.error("Remove from Saved", {
+   position: "top-right",
+   autoClose: 1000,
+   hideProgressBar: false,
+   closeOnClick: false,
+   pauseOnHover: true,
+   draggable: true,
+   progress: undefined,
+   theme: "dark",
+   transition: Zoom,
+ });
 }
 
 

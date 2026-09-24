@@ -5,7 +5,6 @@ const NotFound = () => {
     <main className="min-h-screen bg-[#0f1115] px-6 text-white">
       <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center">
         <div className="w-full text-center">
-
           {/* 404 */}
           <div className="relative">
             <h1 className="text-[140px] font-black leading-none tracking-tighter text-[#C2F800] sm:text-[200px]">
@@ -32,13 +31,12 @@ const NotFound = () => {
             </h2>
 
             <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-gray-400 sm:text-lg">
-              The workout or page you&#39;re looking for doesn&#39;t exist, has been
-              moved, or is no longer available.
+              The workout or page you&#39;re looking for doesn&#39;t exist, has
+              been moved, or is no longer available.
             </p>
 
             {/* Buttons */}
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-
               <Link
                 href="/"
                 className="btn border-none bg-[#C2F800] px-8 text-black hover:bg-[#d4ff3d]"
@@ -52,7 +50,6 @@ const NotFound = () => {
               >
                 Browse Workouts
               </Link>
-
             </div>
           </div>
 
@@ -66,7 +63,6 @@ const NotFound = () => {
 
             <div className="h-px flex-1 bg-gray-800"></div>
           </div>
-
         </div>
       </div>
     </main>

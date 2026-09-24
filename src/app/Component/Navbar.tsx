@@ -24,8 +24,8 @@ const Navbar = () => {
       <li>
         <Link
           href={"/My-Plan"}
-          className={`${pathName === "/My-Plan" ? "text-[#CCFF00] bg-[#c8d1a64e] " : ""}`}>
-        
+          className={`${pathName === "/My-Plan" ? "text-[#CCFF00] bg-[#c8d1a64e] " : ""}`}
+        >
           My Plan
         </Link>
       </li>

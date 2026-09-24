@@ -33,12 +33,6 @@ const MyPlanPage = () => {
 
   const addPlanSort = sortSelector(addPlan);
 
-  //  const Exercises = addPlanSort.length
-
-  // const totalTime = addPlanSort.reduce((total , valu)=> total+ valu.duration,0)
-
-  // const totalCslori = addPlanSort.reduce((total,valu)=>total+ valu.caloriesBurned ,0)
-
   const currentData = activeTab === "plan" ? addPlanSort : savedSort;
 
   const exercises = currentData.length;

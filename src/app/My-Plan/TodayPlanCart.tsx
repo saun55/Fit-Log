@@ -7,95 +7,92 @@ import { PiFireSimpleFill } from "react-icons/pi";
 import Link from "next/link";
 import { useContext } from "react";
 import { FitLogContext } from "../Context/FitLogProvider";
-interface TodayPlanCartType{
-  PlanCart:FitLogType
+import { toast, Zoom } from "react-toastify";
+interface TodayPlanCartType {
+  PlanCart: FitLogType;
 }
 
+const TodayPlanCart = ({ PlanCart }: TodayPlanCartType) => {
+  const { addPlan, setAddPlan } = useContext(FitLogContext);
 
-const TodayPlanCart = ({PlanCart}:TodayPlanCartType) => {
-
-const {addPlan ,setAddPlan} = useContext(FitLogContext)
-
-const handelDelete = ()=>{
-  const pre = addPlan.filter(fit => fit.id !== PlanCart.id);
- setAddPlan(pre)
-}
-
+  const handelDelete = () => {
+    const pre = addPlan.filter((fit) => fit.id !== PlanCart.id);
+    setAddPlan(pre);
+    toast.error("Remove from Plan", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Zoom,
+    });
+  };
 
   return (
- 
     <div className="flex w-full flex-col gap-4 rounded-2xl border border-[#252b35] bg-[#15181f] p-4 shadow-xl sm:p-5 md:flex-row md:items-center md:justify-between">
+      {/* ================= LEFT SIDE ================= */}
+      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+        {/* Image */}
+        <Image
+          src={PlanCart.image}
+          height={75}
+          width={135}
+          alt={PlanCart.name}
+          className="h-20 w-28 shrink-0 rounded-xl object-cover sm:h-20 sm:w-32 md:h-[75px] md:w-[135px]"
+        />
 
-  {/* ================= LEFT SIDE ================= */}
-  <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+        {/* Content */}
+        <div className="min-w-0">
+          {/* Name */}
+          <h1 className="truncate text-base font-black uppercase text-white sm:text-lg">
+            {PlanCart.name}
+          </h1>
 
-    {/* Image */}
-    <Image
-      src={PlanCart.image}
-      height={75}
-      width={135}
-      alt={PlanCart.name}
-      className="h-20 w-28 shrink-0 rounded-xl object-cover sm:h-20 sm:w-32 md:h-[75px] md:w-[135px]"
-    />
+          {/* Equipment */}
+          <p className="mt-0.5 truncate text-xs text-[#9CA3AF] sm:text-sm">
+            {PlanCart.equipment}
+          </p>
 
-    {/* Content */}
-    <div className="min-w-0">
+          {/* Stats */}
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 sm:gap-x-4">
+            {/* Duration */}
+            <div className="flex items-center gap-1.5">
+              <FaRegClock className="text-sm text-lime-400" />
 
-      {/* Name */}
-      <h1 className="truncate text-base font-black uppercase text-white sm:text-lg">
-        {PlanCart.name}
-      </h1>
+              <span className="text-xs text-gray-300">
+                {PlanCart.duration} min
+              </span>
+            </div>
 
-      {/* Equipment */}
-      <p className="mt-0.5 truncate text-xs text-[#9CA3AF] sm:text-sm">
-        {PlanCart.equipment}
-      </p>
+            {/* Calories */}
+            <div className="flex items-center gap-1.5">
+              <PiFireSimpleFill className="text-sm text-lime-400" />
 
-      {/* Stats */}
-      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 sm:gap-x-4">
+              <span className="text-xs text-gray-300">
+                {PlanCart.caloriesBurned} kcal
+              </span>
+            </div>
 
-        {/* Duration */}
-        <div className="flex items-center gap-1.5">
-          <FaRegClock className="text-sm text-lime-400" />
+            {/* Rating */}
+            <div className="flex items-center gap-1.5">
+              <FaRegStar className="text-sm text-lime-400" />
 
-          <span className="text-xs text-gray-300">
-            {PlanCart.duration} min
-          </span>
+              <span className="text-xs text-gray-300">{PlanCart.rating}</span>
+            </div>
+          </div>
         </div>
-
-        {/* Calories */}
-        <div className="flex items-center gap-1.5">
-          <PiFireSimpleFill className="text-sm text-lime-400" />
-
-          <span className="text-xs text-gray-300">
-            {PlanCart.caloriesBurned} kcal
-          </span>
-        </div>
-
-        {/* Rating */}
-        <div className="flex items-center gap-1.5">
-          <FaRegStar className="text-sm text-lime-400" />
-
-          <span className="text-xs text-gray-300">
-            {PlanCart.rating}
-          </span>
-        </div>
-
       </div>
-    </div>
-  </div>
 
+      {/* ================= RIGHT SIDE ================= */}
+      <div className="flex w-full flex-wrap items-center gap-2 sm:justify-end sm:gap-3 md:w-auto">
+        {/* View Details */}
 
-  {/* ================= RIGHT SIDE ================= */}
-  <div className="flex w-full flex-wrap items-center gap-2 sm:justify-end sm:gap-3 md:w-auto">
-
-    {/* View Details */}
-
-    <Link href={`/Workouts/${PlanCart.id}`}>
-    
-   
-    <button
-      className="
+        <Link href={`/Workouts/${PlanCart.id}`}>
+          <button
+            className="
         btn btn-sm
         flex-1
         rounded-full
@@ -110,14 +107,14 @@ const handelDelete = ()=>{
         sm:px-5
         sm:text-sm
       "
-    >
-      View Details
-    </button>
- </Link>
+          >
+            View Details
+          </button>
+        </Link>
 
-    {/* Mark as Done */}
-    <button
-      className="
+        {/* Mark as Done */}
+        <button
+          className="
         btn btn-sm
         flex-1
         rounded-full
@@ -132,16 +129,15 @@ const handelDelete = ()=>{
         sm:px-5
         sm:text-sm
       "
-    >
-      <MdOutlineDone className="text-base sm:text-lg" />
-      Mark as Done
-    </button>
+        >
+          <MdOutlineDone className="text-base sm:text-lg" />
+          Mark as Done
+        </button>
 
-
-    {/* Delete */}
-    <button
-    onClick={handelDelete}
-      className="
+        {/* Delete */}
+        <button
+          onClick={handelDelete}
+          className="
         btn btn-circle btn-sm
         border-none
         bg-transparent
@@ -149,13 +145,11 @@ const handelDelete = ()=>{
         hover:bg-[#20242c]
         hover:text-white
       "
-    >
-      <TiDelete className="text-xl" />
-    </button>
-
-  </div>
-
-</div>
+        >
+          <TiDelete className="text-xl" />
+        </button>
+      </div>
+    </div>
   );
 };
 
